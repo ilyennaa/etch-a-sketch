@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.board {
+    height: 800px;
+    width: 800px;
+    background: lightblue;
+}
