@@ -2,12 +2,18 @@ const board = document.querySelector('.board');
 
 populateBoard();
 
-const tile = board.childNodes;
-console.log(tile[0].childNodes);
+const tileRow = board.childNodes;
 
+for (let i = 0; i < tileRow.length; i++) {
+    let tiles = tileRow[i].childNodes;
 
-const tiles = document.querySelectorAll('.rowDiv>.tile');
-// console.log(tile);
+    for(let j = 0; j < tiles.length; j++) {
+        let tile = tiles[j];
+        tile.addEventListener("mouseover", event => {
+            tile.style.backgroundColor = "gray";
+        });
+    }
+}
 
 function populateBoard() {
     // create horizontal divs
