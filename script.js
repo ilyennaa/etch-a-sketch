@@ -1,20 +1,11 @@
 const board = document.querySelector('.board');
 
 populateBoard();
+addTileEventListeners();
 
-const tileRow = board.childNodes;
-
-for (let i = 0; i < tileRow.length; i++) {
-    let tiles = tileRow[i].childNodes;
-
-    for(let j = 0; j < tiles.length; j++) {
-        let tile = tiles[j];
-        tile.addEventListener("mouseover", event => {
-            tile.style.backgroundColor = "gray";
-        });
-    }
-}
-
+/*
+    populates the board with plain, white tiles
+*/
 function populateBoard() {
     // create horizontal divs
     for (let i = 0; i < 16; i++) {
@@ -47,3 +38,20 @@ function populateBoard() {
 
 }
 
+/*
+    adds event listeners to the tiles inside of the board
+*/
+function addTileEventListeners() {
+    const tileRow = board.childNodes;
+
+    for (let i = 0; i < tileRow.length; i++) {
+        let tiles = tileRow[i].childNodes;
+
+        for(let j = 0; j < tiles.length; j++) {
+            let tile = tiles[j];
+            tile.addEventListener("mouseover", event => {
+                tile.style.backgroundColor = "gray";
+            });
+        }
+    }
+}
