@@ -16,15 +16,15 @@ changeGridSize.addEventListener("click", function() {
 */
 function populateBoard(gridSize=16) {
     board.innerHTML = "";
-    let rowDivHeight = 800 / gridSize;
-    rowDivHeight = (rowDivHeight*100) / 800;
+    let rowDivHeight = ((800 / gridSize)*100) / 800;
+    let dimensionPercent = Math.round(rowDivHeight*100) / 100;
 
     // populate the board with horizontal container divs
     for (let i = 0; i < gridSize; i++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('.rowDiv');
 
-        rowDiv.style.height = `${Math.round(rowDivHeight*100) / 100}%`;
+        rowDiv.style.height = `${dimensionPercent}%`;
         rowDiv.style.width = "100%";
         rowDiv.style.display = "flex";
 
@@ -40,7 +40,7 @@ function populateBoard(gridSize=16) {
             tile.classList.add('.tile');
 
             tile.style.height = "100%";
-            tile.style.width = `${Math.round(rowDivHeight*100) / 100}%`;
+            tile.style.width = `${dimensionPercent}%`;
             tile.style.backgroundColor = "white";
 
             horizontalDivs.appendChild(tile);
