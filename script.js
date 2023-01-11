@@ -9,8 +9,6 @@ changeGridSize.addEventListener("click", function() {
     populateBoard(gridSize);
 });
 
-
-
 /*
     populates the board with plain, white tiles
 */
