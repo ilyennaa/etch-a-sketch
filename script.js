@@ -5,7 +5,7 @@ populateBoard();
 
 
 changeGridSize.addEventListener("click", function() {
-    const gridSize = prompt("What size grid would you like?");
+    const gridSize = prompt("What size grid would you like? (16-100)");
     populateBoard(gridSize);
 });
 
@@ -62,7 +62,7 @@ function addTileEventListeners() {
         for(let j = 0; j < tiles.length; j++) {
             let tile = tiles[j];
             tile.addEventListener("mouseenter", function(event) {
-                tile.style.backgroundColor = "gray";
+                tile.style.backgroundColor = "rgb(58, 58, 58)";
             });
         }
     }

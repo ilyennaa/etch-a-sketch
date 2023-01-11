@@ -2,7 +2,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(196, 255, 220);
+    background-color: rgb(36, 0, 0);
+    color: white;
 }
 
 .board {
