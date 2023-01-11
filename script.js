@@ -1,27 +1,38 @@
 const board = document.querySelector('.board');
+const changeGridSize = document.querySelector('.change-grid-button');
 
 populateBoard();
-addTileEventListeners();
+
+
+changeGridSize.addEventListener("click", function() {
+    const gridSize = prompt("What size grid would you like?");
+    populateBoard(gridSize);
+});
+
+
 
 /*
     populates the board with plain, white tiles
 */
-function populateBoard() {
-    // create horizontal divs
-    for (let i = 0; i < 16; i++) {
+function populateBoard(gridSize=16) {
+    board.innerHTML = "";
+    let rowDivHeight = 800 / gridSize;
+    rowDivHeight = (rowDivHeight*100) / 800;
+
+    // populate the board with horizontal container divs
+    for (let i = 0; i < gridSize; i++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('.rowDiv');
 
-        rowDiv.style.height = "6.25%";
+        rowDiv.style.height = `${Math.round(rowDivHeight*100) / 100}%`;
         rowDiv.style.width = "100%";
         rowDiv.style.display = "flex";
 
         board.appendChild(rowDiv);        
     }
 
-     // populate horizontal divs with squares
+    // for each horizontal div, populate it with square tiles
     const rowDivs = board.childNodes;
-
     rowDivs.forEach(function() {
         for (let i = 0; i < rowDivs.length; i++) {
             let horizontalDivs = rowDivs[i];
@@ -29,13 +40,14 @@ function populateBoard() {
             tile.classList.add('.tile');
 
             tile.style.height = "100%";
-            tile.style.width = "6.25%";
+            tile.style.width = `${Math.round(rowDivHeight*100) / 100}%`;
             tile.style.backgroundColor = "white";
 
             horizontalDivs.appendChild(tile);
         }
     });
 
+    addTileEventListeners();
 }
 
 /*
@@ -49,7 +61,7 @@ function addTileEventListeners() {
 
         for(let j = 0; j < tiles.length; j++) {
             let tile = tiles[j];
-            tile.addEventListener("mouseover", event => {
+            tile.addEventListener("mouseenter", function(event) {
                 tile.style.backgroundColor = "gray";
             });
         }
